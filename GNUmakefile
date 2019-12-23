@@ -14,20 +14,20 @@ all:
 	+@echo "All of PostgreSQL successfully made. Ready to install."
 
 rebuild:
-	@sh rebuild.sh
+	+@sh rebuild.sh
 
 start:
-	@pg_ctl -D data start
+	+@pg_ctl -D data start
 
 stop:
-	@pg_ctl -D data stop
+	+@pg_ctl -D data stop
 
 psql:
-	@psql -h localhost -U mayujie -d postgres
+	+@psql -h localhost -U mayujie -d postgres
 
 db:
-	@rm -rf data
-	@initdb -D data
+	+@rm -rf data
+	+@initdb -D data
 
 docs:
 	$(MAKE) -C doc all
