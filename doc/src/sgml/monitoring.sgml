@@ -1212,11 +1212,15 @@ postgres   27093  0.0  0.0  30096  2752 ?        Ss   11:34   0:00 postgres: ser
         </row>
         <row>
          <entry><literal>RecoveryWalAll</literal></entry>
-         <entry>Waiting for WAL from any kind of source (local, archive or stream) at recovery.</entry>
+         <entry>Waiting for WAL from a stream at recovery.</entry>
         </row>
         <row>
          <entry><literal>RecoveryWalStream</literal></entry>
-         <entry>Waiting for WAL from a stream at recovery.</entry>
+         <entry>
+          Waiting when WAL data is not available from any kind of sources
+          (local, archive or stream) before trying again to retrieve WAL data,
+          at recovery.
+         </entry>
         </row>
         <row>
          <entry><literal>SysLoggerMain</literal></entry>
@@ -1423,7 +1427,7 @@ postgres   27093  0.0  0.0  30096  2752 ?        Ss   11:34   0:00 postgres: ser
          <entry>Waiting to apply WAL at recovery because it is delayed.</entry>
         </row>
         <row>
-         <entry morerows="65"><literal>IO</literal></entry>
+         <entry morerows="66"><literal>IO</literal></entry>
          <entry><literal>BufFileRead</literal></entry>
          <entry>Waiting for a read from a buffered file.</entry>
         </row>
@@ -1538,6 +1542,10 @@ postgres   27093  0.0  0.0  30096  2752 ?        Ss   11:34   0:00 postgres: ser
         <row>
          <entry><literal>LogicalRewriteSync</literal></entry>
          <entry>Waiting for logical rewrite mappings to reach stable storage.</entry>
+        </row>
+        <row>
+         <entry><literal>LogicalRewriteTruncate</literal></entry>
+         <entry>Waiting for truncate of mapping data during a logical rewrite.</entry>
         </row>
         <row>
          <entry><literal>LogicalRewriteWrite</literal></entry>
